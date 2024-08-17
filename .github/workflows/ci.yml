@@ -30,8 +30,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 1
-          path: ./
+          fetch-depth: ${{ github.event_name == 'pull_request' && 2 || 0 }}
 
       - name: test
         uses: kalrnlo/fetch-changed@main
