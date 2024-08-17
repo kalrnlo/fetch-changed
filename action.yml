@@ -1,6 +1,6 @@
-name: Fetch Diff
-description: GitHub action to fetch a diff between the previous commits and the current commits
-author: kalrnlo
+name: fetch-changed
+description: GitHub action to fetch a list of changed files between the previous commits and the current commits
+author: Kalrnlo
 
 branding:
   icon: list
