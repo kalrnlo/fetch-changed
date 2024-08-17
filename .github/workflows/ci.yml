@@ -34,3 +34,7 @@ jobs:
 
       - name: test
         uses: kalrnlo/fetch-changed@main
+        id: fetched
+
+      - name: print
+        run: echo ${{ steps.fetched.outputs.files_changed }}
