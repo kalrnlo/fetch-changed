@@ -30,13 +30,13 @@ runs:
           push)
             previous="${{ github.event.commits[-1].id }}";
             latest="${{ github.event.commits[0].id }}";
-            diff = gh api "repos/${{github.repository}}/compare/$previous...$latest" --jq .files[].path
+            diff = "$(gh api "repos/${{github.repository}}/compare/$previous...$latest" --jq .files[].path)";
             ;;
           pull_request)
             base_repo="${{github.event.pull_request.base.repo.full_name}}";
             base_sha="${{github.event.pull_request.base.sha}}";
             label="${{github.event.pull_request.head.label}}";
-            diff = gh api "repos/$base_repo/compare/$base_sha...$label" --jq .files[].path
+            diff = "$(gh api "repos/$base_repo/compare/$base_sha...$label" --jq .files[].path)";
             ;;
         esac
 
