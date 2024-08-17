@@ -34,4 +34,4 @@ jobs:
           path: ./
 
       - name: test
-        uses: action.yml
+        uses: kalrnlo/fetch-changed@main
