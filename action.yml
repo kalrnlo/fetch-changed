@@ -28,6 +28,7 @@ runs:
       run: |
         case "${{ github.event_name }}" in
           push)
+            echo ${{ github.event.commits }}
             previous="${{ github.event.commits[-1].id }}";
             latest="${{ github.event.commits[0].id }}";
             diff = "$(gh api "repos/${{github.repository}}/compare/${{ github.event.commits[-1].id }}...${{ github.event.commits[0].id }}" --jq ".files[].filename")";
