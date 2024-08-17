@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  workflow_dispatch:
+  # im just including everything under scripts,
+  # because its easier and it means i dont forget to add a script here
+  # because theres certain scripts where if theyre changed, all tests should be ran
+  push:
+    branches: [ main ]
+    paths:
+      - "action.yml"
+  pull_request:
+    branches: [ main ]
+    paths:
+      - "action.yml"
+
+jobs:
+  Main:    
+    runs-on: ${{ matrix.runner-os }}
+    name: ${{ matrix.name }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: Windows
+            runner-os: windows-latest
+  
+          - name: Linux
+            runner-os: ubuntu-latest
+  
+          - name: macOS
+            runner-os: macos-14
+        
+    steps:
+      - uses: kalrnlo/fetch-changed@v2
