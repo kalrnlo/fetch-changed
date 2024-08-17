@@ -36,6 +36,7 @@ runs:
             lastCommit='${{ github.event.head_ref }}'
             ;;
         esac
-        diff=$(git diff --name-only --diff-filter=d ${firstCommit}~1 ${lastCommit})
-        echo "diff=$diff" >> $GITHUB_OUTPUT
-        echo diff >> .diff
+
+        diff=$(git diff --name-only --diff-filter=d ${firstCommit}~1 ${lastCommit});
+        echo "diff=$diff" >> $GITHUB_OUTPUT;
+        echo diff >> .diff;
